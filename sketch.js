@@ -41,7 +41,8 @@ function setup() {
 
   currentYear = startYear;
 
-  frameRate(3);
+  rectMode(CENTER);
+  frameRate(30);
 }
 
 function draw() {
@@ -77,13 +78,19 @@ function drawTrees() {
 
       let r = age * 1.3;
 
+      let opacity = map(age, 0, 20, 255, 0);
+
       fill(0);
       noStroke();
       ellipse(x, y, 1, 1);
 
-      stroke(0, 20);
+      stroke(0, opacity);
       noFill();
-      ellipse(x, y, r, r);
+      push();
+      translate(x, y);
+      rotate(radians(45));
+      rect(0, 0, r, r);
+      pop();
     }
   }
 }
